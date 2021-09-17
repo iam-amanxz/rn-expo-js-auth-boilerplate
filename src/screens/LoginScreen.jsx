@@ -1,10 +1,8 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { useAuth } from '../contexts/AuthProvider';
+import { signin } from '../services/session';
 
 const LoginScreen = ({ navigation }) => {
-  const { setCurrentUser } = useAuth();
-
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Login Screen</Text>
@@ -17,8 +15,8 @@ const LoginScreen = ({ navigation }) => {
       </Pressable>
 
       <Pressable
-        onPress={() => {
-          setCurrentUser(true);
+        onPress={async () => {
+          await signin('husnulamanads@gmail.com', 'test123#');
         }}
       >
         <Text style={{ marginTop: 30 }}>Login</Text>

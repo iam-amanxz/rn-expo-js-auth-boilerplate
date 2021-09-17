@@ -9,6 +9,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import AuthProvider from '../contexts/AuthProvider';
 import Navigation from '../navigation';
 import SplashScreen from '../screens/SplashScreen';
+import { LogBox } from 'react-native';
+import { SPLASH_DELAY } from '../config';
+
+LogBox.ignoreLogs(['Setting a timer for a long period of time']);
 
 function App() {
   const colorScheme = useColorScheme();
@@ -28,10 +32,10 @@ function App() {
     };
 
     load();
-
+    // setLoading(false);
     const timer = setTimeout(async () => {
       setLoading(false);
-    }, 3000);
+    }, SPLASH_DELAY);
 
     return () => {
       clearTimeout(timer);
